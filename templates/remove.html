@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Expense
+{% endblock %}
+
+{% block main %}
+    <br>
+    <br>
+
+    <table class="table table-hover table-light">
+        <thead class="thead-light">
+            <th class="bg-success" style="color:white">Expense Type</th>
+            <th>Amount Spent</th>
+            <th class="bg-success" style="color:white">Date time</th>
+            <th></th>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense["type"] }}</td>
+                <td>{{ expense["amount"] }} {{ code }}</td>
+                <td>{{ expense["time"] }}</td>
+                <td>
+                    <form action="/remove" method="post" name="{{ expense['id'] }}">
+                        <input type="hidden" name="id" value="{{ expense['id'] }}">
+                        <button class="btn btn-danger" type="submit">Remove</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <td><strong>TOTAL</strong></td>
+            <td><strong>{{ total }} {{ code }}</strong></td>
+        </tfoot>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Expense
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post">
+        <div class="mb 3">
+            <select class="form-select mx-auto w-auto country" name="expense">
+                <option disabled selected value="">Select Expense</option>
+                {% for expense in expenses %}
+                      <option value="{{ expense }}">{{ expense }}</option>
+                {% endfor %}
+            </select>
+        <br>
+        </div>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="amount" placeholder="Amount" type="text">
+        </div>
+        <button class="btn btn-success" type="submit">Add</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+<img src="static/students.png" alt="students" width="300" height="200">
+<br>
+<br>
+<form action="/login" method="post">
+  <div class="mb-3">
+      <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="username" placeholder="Username" type="text">
+  </div>
+  <div class="mb-3">
+      <input class="form-control mx-auto w-auto" name="password" placeholder="Password" type="password">
+  </div>
+  <p style="color:white;">Not a user already? <a href="/register">Register Now</a></p>
+  <button class="btn btn-success" type="submit">Log In</button>
+</form>
+{% endblock %}

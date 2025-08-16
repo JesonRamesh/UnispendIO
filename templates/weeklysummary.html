@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Weekly Summary
+{% endblock %}
+
+{% block main %}
+
+    <h2><strong>Choose Week</strong></h2>
+    {% if len(week_numbers) == 0 %}
+        <h5>Oops! No summaries available yet!</h5>
+    {% endif %}
+    <form>
+        {% for week in week_numbers %}
+            <a href="weeklysummary/{{ week }}" class="btn btn-success"><strong>{{ week }}</strong></a>
+            <br>
+        {% endfor %}
+    </form>
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    {% if total_days == 0 %}
+        <h4>Thank you for registering! It's Day One! Hope you track your expenses and save a lot of money in the upcoming days!</h4>
+    {% else %}
+        <h4>You've been tracking your expenses for {{ total_days + 1 }} days. Keep Up!</h4>
+    {% endif %}
+
+    <br>
+
+    {% if remaining < 0 %}
+        <h3>YOUR EXPENSES HAVE <strong>EXCEEDED</strong> YOUR BUDGET THIS WEEK.</h3>
+    {% else %}
+        <h3>You have <strong>{{ remaining }} {{ code }}</strong> left to spend this week. Spend Wisely!</h3>
+    {% endif %}
+
+    <br>
+    <br>
+
+    <table class="table table-hover table-light">
+        <thead>
+            <th class="bg-success" style="color:white">Expense Type</th>
+            <th>Amount Spent</th>
+            <th class="bg-success" style = "color: white">Date time</th>
+            <th>Week</th>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+            <tr>
+                <td>{{ expense["type"] }}</td>
+                <td>{{ expense["amount"] }} {{ code }}</td>
+                <td>{{ expense["time"] }}</td>
+                <td>{{ expense["week"] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <td class="table-success"><strong>TOTAL</strong></td>
+            <td class="table-success"><strong>{{ total }} {{ code }}</strong></td>
+        </tfoot>
+    </table>
+
+    <p>To check past week's summary, go to <a href="weeklysummary">Weekly Summary</a>.</p>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Week {{ week_number }}
+{% endblock %}
+
+{% block main %}
+
+<h2 style="color:white;"><strong>Week {{ week_number }}</strong></h2>
+
+<br>
+
+<table class="table table-hover table-light">
+    <thead>
+        <th class="bg-success" style="color:white">Expense Type</th>
+        <th>Total Amount Spent</th>
+    </thead>
+    <tbody>
+        {% for expense in expenses %}
+        <tr>
+            <td><strong>{{ expense["type"] }}</strong></td>
+            <td>{{ expense["amount"] }} {{ code }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <td class="table-success"><strong>TOTAL</strong></td>
+        <td class="table-success"><strong>{{ total }} {{ code }}</strong></td>
+    </tfoot>
+</table>
+
+{% if remaining == 0 %}
+    <h3>You didn't save any money this week :(</h3>
+{% elif remaining < 0 %}
+    <h3>You've exceeded your weekly budget :(</h3>
+{% else %}
+    <h3>You saved <strong>{{ remaining }} {{ code }}</strong> !!</h3>
+{% endif %}
+
+<br>
+
+<a href="/weeklysummary" class="btn btn-success">Back</a>
+
+
+{% endblock %}

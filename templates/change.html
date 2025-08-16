@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Change Weekly Budget
+{% endblock %}
+
+{% block main %}
+
+    <h3 style="color:white;">Your current Weekly Budget is <strong>{{ current_weekly_budget }} {{ code }}</strong>.</h3>
+    <br>
+
+    <form action="/change" method="post">
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="newBudget" placeholder="New Budget" type="text">
+        </div>
+        <button class="btn btn-success" type="submit">Change</button>
+    </form>
+
+{% endblock %}
